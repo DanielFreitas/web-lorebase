@@ -1,0 +1,118 @@
+/* =========================================================
+   LoreBase — Custom Starlight Theme
+   ========================================================= */
+
+:root {
+  /* Starlight accent overrides - Using Cyan theme */
+  --sl-color-accent-low: #e1f6fd;
+  --sl-color-accent: #007bb5;
+  --sl-color-accent-high: #004d73;
+  --brand-cyan: #007bb5;
+  
+  --sl-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #0e3b72;
+  --sl-color-accent: #40beed;
+  --sl-color-accent-high: #bcedff;
+
+  /* Brand palette */
+  --brand-bg: #0a0a0e;
+  --brand-bg-soft: #111118;
+  --brand-border: #1e1e2e;
+  --brand-cyan: #40beed;
+
+  --sl-color-bg: var(--brand-bg);
+  --sl-color-bg-nav: var(--brand-bg-soft);
+  --sl-color-bg-sidebar: var(--brand-bg-soft);
+  --sl-color-hairline-light: rgba(255, 255, 255, 0.05);
+  --sl-color-hairline: var(--brand-border);
+}
+
+/* Base Body settings */
+body {
+  background-image: radial-gradient(circle at 100% 0%, rgba(64,190,237,0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Typography Enhancements */
+.sl-markdown-content h1, 
+.sl-markdown-content h2, 
+.sl-markdown-content h3 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+:root[data-theme='dark'] .sl-markdown-content h1 {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Code block enhancements */
+:root[data-theme='dark'] .sl-markdown-content .expressive-code {
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.5);
+}
+
+.sl-markdown-content .expressive-code {
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+/* Callouts / Asides */
+:root[data-theme='dark'] .starlight-aside {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+
+.starlight-aside {
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.starlight-aside--note {
+  border-left: 4px solid var(--sl-color-accent);
+}
+
+/* Links */
+.sl-markdown-content a:not(.sl-button) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: all 0.2s ease;
+}
+
+:root[data-theme='dark'] .sl-markdown-content a:not(.sl-button) {
+  text-decoration-color: rgba(64,190,237,0.3);
+}
+
+.sl-markdown-content a:not(.sl-button):hover {
+  text-decoration-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+/* Sidebar styling */
+:root[data-theme='dark'] .sidebar-content {
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-pane a {
+  border-radius: 0.3rem;
+  transition: background 0.2s ease;
+}
+
+:root[data-theme='dark'] .sidebar-pane a:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+:root[data-theme='light'] .sidebar-pane a:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.sidebar-pane a[aria-current='page'] {
+  background: rgba(64,190,237,0.1);
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+}

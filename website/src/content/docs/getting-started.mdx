@@ -1,0 +1,41 @@
+---
+title: Instalação e Setup
+description: Como instalar e inicializar o Lorebase no seu projeto em 3 passos simples.
+---
+
+Colocar o Lorebase para rodar no seu repositório local e ativá-lo para os Agentes de IA é muito rápido. 
+
+O processo se resume a baixar os arquivos de instrução e permitir que a sua IA conheça o código atual.
+
+## Passo 1: Instalação no nível do Projeto
+
+Abra o terminal na pasta raiz da sua aplicação e rode o comando abaixo. Ele vai organizar as diretrizes dentro da pasta `.github` silenciosamente, sem quebrar o seu código existente:
+
+```bash
+npx github:DanielFreitas/lorebase init .
+```
+*(Você também pode dar `npm install -g github:DanielFreitas/lorebase` e usar sempre `lorebase init .` globalmente).*
+
+## Passo 2: O Primeiro Raio-X
+
+Agora que a inteligência artificial sabe *onde* guardar as coisas, nós dizemos para ela mapear tudo. Abra a aba do **Copilot Chat** na sua IDE (garanta que está em modo de Agente) e digite:
+
+```text
+/learn-discovery
+```
+
+**E pronto.** Relaxe uns instantes enquanto o agente varre a raiz do projeto e descobre as linguagens, os pacotes e a arquitetura adotados. Ele irá gerar os seus documentos primários como `STACK.md` e `ARCHITECTURE.md` alocados em `docs/lorebase/`.
+
+## Passo 3: Revise, Aprove e Commite.
+
+Esses arquivos agora descrevem seu software publicamente para que agentes futuros jamais "divaguem" ou comecem a sugerir códigos fora de sintonia.
+Dê uma olhada rápida na pasta `docs/lorebase/`. Parecem informações precisas do que o time já pratica? 
+
+É só adicionar e commitar para tornar a verdade técnica oficial!
+
+```bash
+git add docs/lorebase/
+git commit -m "docs: bootstrap codebase knowledge"
+```
+
+A base está pronta. Agora entenda como usar isso fluindo no seu trabalho diário acessando os **[Fluxos Superpowers](/web-lorebase/superpowers)**.

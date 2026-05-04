@@ -1,0 +1,35 @@
+---
+title: Projetos Existentes (Brownfield)
+description: Como extrair o contexto real de um sistema legado e fazer a IA reaprender os padrões corretos de forma incremental.
+---
+
+Aplicar IA em legados gigantes sem documentação geralmente termina em sugestões alucinadas usando bibliotecas antigas ou desrespeitando padrões atuais. Com o Lorebase + Superpowers as coisas mudam: a IA descobre como o projeto *realmente é* hoje, e passa a aprender continuamente conforme você refatora ou desenvolve.
+
+Diferente de forçar paradas mensais para documentar, aqui vamos construir inteligência "em tempo de voo".
+
+## Assumindo o Controle do Legado
+
+### 1. O Setup Silencioso
+Rode a inicialização na raiz sem hesitação. O Lorebase apenas estrutura diretórios e instruções focadas na IA sob `.github/` e `docs/`, mantendo toda a sua estrutura nativa 100% blindada e intacta.
+```bash
+npx github:DanielFreitas/lorebase init .
+```
+
+### 2. A Mão e a Descoberta Inicial
+Abra seu Copilot Chat e chame a varredura primária:
+> `/learn-discovery`
+
+O agente devorará tudo: subpastas em poeira, componentes raízes, conexões lógicas, scripts escondidos. A IA então constrói o terreno baldio com os `STACK.md`, `ARCHITECTURE.md` em `docs/lorebase`. 
+**Recomendação de Ouro:** Dê o primeiro pente-fino como humano nesses gerados. Por ser legado, a IA vai absorver gambiarras de 4 anos atrás como se fossem as grandes premissas oficiais desse seu software, pois é o que havia em predominância. Troque esses trechos por regras mais rígidas atuais com as quais seu time se orienta modernamente. Feito isso, commite a base.
+
+### 3. A Lapidação (O Dia a Dia)
+Nunca mais abra os arquivos Markdown. Durante o desenvolvimento usual, chame as diretrizes do **Superpowers** (comandos cruciais como o `brainstorming`). E é aqui que a roda gira de verdade:
+
+A primeira ação silenciosa do agente antes de esboçar refatorações é ler a sua recém validada biblioteca em `docs/lorebase`. 
+Sua refatoração evoluiu os parâmetros? Aposentou o Redux de uma ala inteira via `executing-plans`? Automaticamente a IA vai reconhecer o padrão atual e engatilhar de fundo o uso silencioso do `/learn-capture` na folha `inbox.md`, sem nem avisá-lo e nem interverrir na sua sessão de codificação ativa.
+
+### 4. Expulsando o Monólito com Supervisão (Expansão contínua)
+A Sprint finalizou. Entregas e merges a todo vapor? Diga que os rascunhos virarão livro texto:
+> `/learn-update`
+
+A IA examina cada entrada acumulada isoladamente no `inbox.md` buscando ativamente por **evidência verificável no código** (testes criados do zero, comentários arquiteturais que você gerou, ou artefatos explícitos do PR). Ao achar a prova, o agente **para e exige a aprovação humana**. Ela só edita a documentação definitiva em `docs/lorebase/*.md` para aquelas anotações provadas como verdades reais que ganharam seu carimbo final de confirmação. Promovendo as inovações limpas da mente humana e filtrando premissas falhas de antigas IAs sob um funil prático e automático a cada sprint.

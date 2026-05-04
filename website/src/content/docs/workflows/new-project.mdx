@@ -1,0 +1,34 @@
+---
+title: Projetos Novos (Greenfield)
+description: Como construir a memória técnica correta desde o primeiro commit, guiando a IA naturalmente através dos fluxos de trabalho.
+---
+
+Começar um projeto do zero (Greenfield) com Lorebase e Superpowers significa que toda decisão técnica será lembrada e respeitada pela IA no futuro.
+
+A mágica está em deixar os sistemas trabalharem juntos: o **Superpowers** guiando *como* a IA atua nas tarefas, e o **Lorebase** armazenando *o que* ela sabe sobre o projeto.
+
+## O Fluxo na Prática
+
+### 1. Injetando a Memória Inicial
+Assim que criar a base vazia do seu framework (NextJS, Rails, Ruby etc.), instale o Lorebase no diretório principal:
+```bash
+npx github:DanielFreitas/lorebase init .
+```
+
+### 2. O Primeiro Mapeamento
+No Copilot Chat (Agent Mode), rode:
+> `/learn-discovery`
+
+A IA varrerá seu diretório e criará a estrutura base em `docs/lorebase`. Como está no início, registrará apenas as configurações elementares, frameworks instalados na base e tecnologias fundamentais visíveis no seu manifesto (`package.json`, etc.). Commite essas mudanças.
+
+### 3. O Ciclo de Desenvolvimento
+A partir daqui, use os comandos do Superpowers naturalmente para criar as funcionalidades (`brainstorming`, `writing-plans`, etc.). 
+
+- **Consulta Automática:** Sempre que você iniciar uma nova demanda com `brainstorming`, o agente fará uma leitura em background na pasta `docs/lorebase` para entender regras do projeto antes de montar o plano, reduzindo a chance de ideias fora do lugar.
+- **Aprendizado Contínuo:** Se no meio do andamento de uma tarefa, ele introduzir um padrão até então inexplorado (como um Middleware de Validação totalmente unificado), o **próprio agente usará o `/learn-capture` na surdina** para empilhar essa anotação no arquivo `inbox.md`, salvaguardando a ideia sem poluir de imediato a base de regras nem desconcentrar você.
+
+### 4. A Oficialização com Supervisão (Fechamento do Ciclo)
+Ao final de uma sprint, entrega épica ou Pull Request super importante, a equipe toma um momento apenas para fechar o ciclo:
+> `/learn-update`
+
+A IA varre tudo o que deixou pendente silenciosamente no `inbox.md` e, como foi rigidamente instruída, busca de forma ativa por evidências verificáveis no código (como testes, comentários recentes ou artefatos recém-adicionados). Após agrupar e classificar esses dados, o agente então interrompe o fluxo para pedir a sua **confirmação humana obrigatória**. Somente os aprendizados que contiverem **evidência real e tiverem sido aprovados por você** serão promovidos para dentro da raiz de `docs/lorebase/*.md` gerando novas ramificações de padrões a cada ciclo. Assim, sua IA ficará cada vez mais assertiva e jamais alucinará o que não foi efetivamente consolidado e validado pela própria equipe.

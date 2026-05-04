@@ -1,0 +1,42 @@
+---
+title: Comandos Superpowers
+description: Descubra o fluxo de trabalho (workflow) mandatório para interagir com o agente durante o desenvolvimento.
+---
+
+O processo do Lorebase utiliza o pacote de fluxos do **[Superpowers](https://github.com/obra/superpowers)**. O agente analisa e checa as skills relevantes antes de executar qualquer tarefa. 
+
+Estes fluxos de trabalho são **obrigatórios**, não apenas sugestões.
+
+## O Fluxo Básico
+
+### `brainstorming`
+Ativado antes de escrever o código. Refina ideias em estágio inicial através de perguntas, explora alternativas, apresenta o design estruturado em seções para validação, e por fim salva um documento de design.
+
+### `writing-plans`
+Ativado tendo um design aprovado em mãos. Quebra o trabalho em pequenas tarefas (de 2 a 5 minutos cada). Cada tarefa possui caminhos de arquivos exatos, código completo e passos de verificação.
+
+### `subagent-driven-development` ou `executing-plans`
+Ativado a partir de um plano. Dispara um sub-agente fresco (fresh) para cada tarefa com uma avaliação em dois estágios (conformidade com a especificação, e então qualidade do código), ou executa as tarefas em lotes com marcações (*checkpoints*) para o humano validar.
+
+### `test-driven-development`
+Ativado durante a fase de implementação. Força o mecanismo **RED-GREEN-REFACTOR**: escreve um teste que falha, assiste ele falhar, escreve apenas o código mínimo para que ele passe, assiste passar, e faz commit. Apaga qualquer código que seja escrito *antes* de seu respectivo teste.
+
+### `requesting-code-review`
+Ativado nos intervalos entre tarefas. Revisa a execução baseando-se no plano e reporta problemas organizados por severidade. Problemas críticos bloqueiam o avanço.
+
+### `finishing-a-development-branch`
+Ativado quando todas as tarefas chegam ao fim. Verifica os testes, apresenta opções do que fazer com o material (merge/PR/manter branch/descartar) e faz a limpeza da worktree criada.
+
+---
+
+## Como Superpowers e Lorebase trabalham juntos?
+
+Pense da seguinte forma:
+- O **Superpowers** é o motor de execução (define **como** trabalhar passo a passo).
+- O **Lorebase** é a memória do projeto (define **o que** o agente sabe através da pasta lorebase).
+
+Graças às instruções embutidas, a rotina do agente funciona de maneira muito natural:
+
+1. **Lê o manual antes de planejar:** No início de qualquer tarefa (`brainstorming`), o agente consulta o documento de lorebase diretamente relacionado ao tema da mudança — por exemplo, `STACK.md` para dependências ou `ARCHITECTURE.md` para decisões estruturais. Se nenhum documento relevante existir, prossegue com conhecimento geral ou pede esclarecimento. Assim, ele propõe soluções que respeitam o padrão do projeto, sem inventar coisas do zero.
+2. **Anota enquanto trabalha:** Em qualquer fase do fluxo, se o agente esbarrar em um aprendizado técnico relevante, ele usa o `/learn-capture` imediatamente — sem acumular para depois. Isso salva o aprendizado em `inbox.md` silenciosamente, sem interromper o trabalho em andamento.
+3. **Atualiza com segurança e revisão humana:** O agente é **proibido** de alterar a documentação oficial durante uma tarefa de implementação. A documentação só é atualizada quando a equipe invoca o `/learn-update`: o agente valida cada entrada do `inbox.md` buscando evidência verificável no código (como testes ou artefatos explícitos), apresenta um relatório ao desenvolvedor e **exige confirmação humana obrigatória** para cada sinal antes de finalmente promover as verdades comprovadas para os documentos oficiais.
